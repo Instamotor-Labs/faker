@@ -153,3 +153,7 @@ en:
       author:
         - "#{Name.name}"
         - "#{Company.name}"
+
+    vehicle:
+      make: ['mercedes', 'bmw']
+      model: ['m5', 'e350']
