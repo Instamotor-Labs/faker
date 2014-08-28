@@ -2,17 +2,31 @@ module Faker
   class Vehicle < Base
 
     class << self
+      def init
+        source = File.expand_path(File.dirname(__FILE__) + '/../locales/vehicle_data.json')
+        @info = JSON.parse(File.read(source)).sample
+      end
+
       def make
-        fetch('vehicle.make')
+        init unless @info
+        @info['make']
       end
 
       def model
-        fetch('vehicle.model')
+        init unless @info
+        @info['model']
       end
 
       def year
-        random = Random.new
-        random.rand(2008..2014)
+        init unless @info
+        @info['year']
+        # random = Random.new
+        # random.rand(2008..2014)
+      end
+
+      def trim
+        init unless @info
+        @info['trim']
       end
 
       def price
